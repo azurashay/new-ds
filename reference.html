@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Folloze Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="tokens/tokens.css" />
+<style>
+/* ============================================================
+   Folloze Design System — single living document (light only).
+   Colors from tokens/tokens.css. Primary button = navy pill #0A1230.
+   Selected / on states = black (#030303). Headings Instrument Sans, body Inter.
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fz-font-body);background:#fff;color:#030303;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--fz-font-heading);font-weight:700;line-height:1.2;letter-spacing:-.01em}
+
+/* layout */
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;border-right:1px solid #eee;padding:28px 20px;background:#fafafa}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--fz-font-heading);font-weight:700;font-size:20px;margin-bottom:4px}
+.brand .dot{width:22px;height:22px;border-radius:6px;background:var(--fz-bg-brand);display:grid;place-items:center;color:#fff;font-size:13px}
+.sidebar .ver{font-size:12px;color:#aaa;margin-bottom:26px}
+.nav-group{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#aaa;margin:20px 0 8px;font-weight:600}
+.nav a{display:block;padding:7px 10px;border-radius:8px;color:#030303;text-decoration:none;font-size:14px;font-weight:500}
+.nav a:hover{background:#fff}
+.nav a.active{background:var(--fz-bg-brand);color:#fff}
+
+.main{padding:40px 56px 120px;max-width:1040px}
+.page-title{font-size:44px}
+.page-sub{color:#666;font-size:16px;margin:10px 0 40px;max-width:62ch}
+
+section{padding-top:56px;scroll-margin-top:24px}
+.sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #eee;padding-bottom:14px;margin-bottom:28px}
+.sec-head h2{font-size:28px;font-family:var(--fz-font-heading);font-weight:600}
+.sec-head span{font-size:13px;color:#aaa}
+.sub-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#aaa;margin:28px 0 14px}
+.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.col{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.tip{font-size:13px;color:#666;margin-top:14px}
+.canvas{border:1px solid #eee;border-radius:16px;padding:28px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.canvas.col{align-items:flex-start}
+
+/* colors */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.swatch{border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden;height:128px;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.swatch .name{font-size:13px;font-weight:600}
+.swatch .hex{font-size:12px;font-family:ui-monospace,monospace;opacity:.85}
+
+/* typography */
+.type-row{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:baseline;padding:14px 0;border-bottom:1px solid #eee}
+.type-row .spec{font-size:12px;color:#aaa;font-family:ui-monospace,monospace}
+
+/* spacing + radius scales */
+.scale-row{display:flex;align-items:center;gap:20px;padding:9px 0;border-bottom:1px solid #eee}
+.scale-row .lbl{width:150px;font-size:13px}
+.scale-row .lbl b{font-weight:600}
+.scale-row .lbl span{color:#aaa;font-family:ui-monospace,monospace;margin-left:8px}
+.space-bar{height:18px;background:var(--fz-bg-brand);border-radius:4px}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px}
+.radius-item .radius-box{width:84px;height:84px;background:var(--fz-bg-secondary);border:1px solid #ddd}
+.radius-item .cap b{font-weight:600}
+.radius-item .cap span{color:#aaa;font-family:ui-monospace,monospace;margin-left:6px}
+.shadow-item{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:13px}
+.shadow-item .shadow-box{width:104px;height:104px;background:#fff;border-radius:12px}
+.shadow-item .shadow-box.inset{background:#f4f5f7}
+.shadow-item .cap b{font-weight:600}
+.shadow-item .cap span{color:#aaa;font-family:ui-monospace,monospace;margin-left:6px}
+#shadows .row{padding:8px 0 8px}
+
+/* ---------- BUTTONS (navy pill) ---------- */
+.btn{font-family:var(--fz-font-body);font-weight:500;font-size:15px;border-radius:999px;padding:14px 22px;cursor:pointer;border:1px solid transparent;display:inline-flex;align-items:center;gap:8px;transition:all .15s}
+.btn-primary{background:#0a1230;color:#fff}
+.btn-primary:hover{background:#142766}
+.btn-brand{background:var(--fz-bg-brand);color:#fff}
+.btn-brand:hover{background:var(--fz-primary-400)}
+.btn-outline{background:transparent;color:#0a1230;border-color:#e6e8f0}
+.btn-outline:hover{background:#0a1230;color:#fff;border-color:#0a1230}
+.btn-ghost{background:transparent;color:#030303;padding:14px 4px}
+.btn-ghost:hover{text-decoration:underline}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-sm{padding:10px 16px;font-size:13px}
+.btn-lg{padding:16px 26px;font-size:16px}
+
+/* ---------- TABS ---------- */
+.tabs-seg{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:#eee}
+.tabs-seg .tab{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;color:#666;padding:8px 18px;border-radius:999px;cursor:pointer;transition:all .15s}
+.tabs-seg .tab.active{background:#030303;color:#fff}
+.tabs-line{display:flex;gap:28px;border-bottom:1px solid #eee}
+.tabs-line .tab{font:inherit;font-size:15px;font-weight:600;border:0;background:transparent;color:#666;padding:0 0 12px;cursor:pointer;position:relative}
+.tabs-line .tab.active{color:#030303}
+.tabs-line .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#030303}
+.panel{margin-top:18px;font-size:15px;color:#666}
+
+/* ---------- INPUTS ---------- */
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600}
+.inp{width:420px;max-width:100%;border:1px solid #030303;border-radius:8px;padding:0 12px;display:flex;align-items:center;gap:8px;background:#fff;transition:box-shadow .15s,border-color .15s}
+.inp:focus-within{box-shadow:0 0 0 3px color-mix(in srgb,var(--fz-bg-brand) 22%,transparent)}
+.inp.error{border-color:var(--fz-error)}
+.inp input{font:inherit;font-size:16px;border:0;outline:0;background:transparent;color:#030303;padding:12px 0;width:100%}
+.inp input::placeholder{color:#666}
+.inp .ico{width:24px;height:24px;flex:none;color:#030303;display:grid;place-items:center}
+.inp .ico svg{width:24px;height:24px}
+.inp[aria-disabled="true"]{background:#f3f3f3;opacity:.7}
+.inp.seg{padding:0;gap:0;overflow:hidden}
+.inp.seg .lead{display:flex;align-items:center;gap:6px;padding:12px 16px;white-space:nowrap}
+.inp.seg .divider{width:1px;background:#030303;align-self:stretch}
+.inp.seg .fieldcell{flex:1;display:flex;align-items:center;padding:0 12px}
+.ta{width:420px;max-width:100%;height:140px;border:1px solid #030303;border-radius:8px;padding:12px;font:inherit;font-size:16px;color:#030303;resize:vertical;outline:0}
+.ta:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--fz-bg-brand) 22%,transparent)}
+.hint{font-size:12px;color:#666}
+.hint.err{color:var(--fz-error)}
+.sel{width:420px;max-width:100%;border:1px solid #030303;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;font-size:16px}
+.sel .grow{flex:1}
+.sel .ico{width:24px;height:24px;display:grid;place-items:center}
+
+/* ---------- TAGS ---------- */
+.tag{display:inline-flex;align-items:center;padding:4px 8px;font-weight:600;font-size:14px;background:#eee;color:#030303}
+.tag-brand{background:color-mix(in srgb,var(--fz-bg-brand) 14%,transparent);color:var(--fz-text-brand)}
+.tag-success{background:var(--fz-success-light);color:var(--fz-success)}
+.tag-error{background:var(--fz-error-light);color:var(--fz-error)}
+
+/* ---------- CHECKBOX / RADIO simple ---------- */
+.choice{display:inline-flex;align-items:center;gap:8px;font-size:16px;cursor:pointer;user-select:none}
+.choice input{position:absolute;opacity:0;width:0;height:0}
+.box{width:18px;height:18px;border:1px solid #030303;border-radius:4px;background:#fff;flex:none;display:grid;place-items:center;position:relative;transition:all .12s}
+.box.round{border-radius:100px}
+.choice input:checked + .box{background:#030303;border-color:#030303}
+.choice input:focus-visible + .box{outline:2px solid var(--fz-primary-300);outline-offset:2px}
+.box:not(.round)::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);margin-bottom:2px;transition:transform .12s}
+.choice input:checked + .box:not(.round)::after{transform:rotate(45deg) scale(1)}
+.box.round::after{content:"";width:8px;height:8px;border-radius:16px;background:#fff;transform:scale(0);transition:transform .12s}
+.choice input:checked + .box.round::after{transform:scale(1)}
+
+/* pill chip */
+.chip{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #030303;border-radius:8px;padding:8px 16px;font-size:16px;cursor:pointer;user-select:none;background:transparent;color:#030303;transition:all .12s}
+.chip input{position:absolute;opacity:0}
+.chip:has(input:checked){background:#030303;border-color:#030303;color:#fff}
+.chip.radio{padding:8px 16px 8px 8px}
+.chip .badge{width:40px;padding:8px 0;display:grid;place-items:center;border:1px solid #030303;border-radius:4px;font-weight:600}
+.chip:has(input:checked) .badge{border-color:transparent}
+
+/* card */
+.card{width:370px;max-width:100%;border:1px solid #030303;border-radius:8px;padding:24px;background:#fff;display:flex;gap:16px;align-items:center;cursor:pointer;user-select:none}
+.card input{position:absolute;opacity:0}
+.card .thumb{width:56px;height:56px;border-radius:4px;background:#eee;flex:none;display:grid;place-items:center;color:#aaa}
+.card .body{flex:1;display:flex;flex-direction:column;gap:4px}
+.card .body .t{font-weight:600;font-size:18px}
+.card .body .d{font-weight:400;font-size:16px}
+.card:has(input:checked) .box{background:#030303;border-color:#030303}
+.card:has(input:checked) .box:not(.round)::after{transform:rotate(45deg) scale(1)}
+.card:has(input:checked) .box.round::after{transform:scale(1)}
+
+/* ---------- TOGGLE ---------- */
+.switch{position:relative;width:40px;height:24px;border-radius:500px;background:#ccc;padding:4px;display:flex;align-items:center;flex:none;cursor:pointer;transition:background .15s}
+.switch input{position:absolute;opacity:0}
+.switch .thumb{width:16px;height:16px;border-radius:50px;background:#fff;transition:transform .15s}
+.switch:has(input:checked){background:#030303}
+.switch:has(input:checked) .thumb{transform:translateX(16px)}
+.toggle-inline{display:inline-flex;gap:8px;align-items:center;font-size:16px;cursor:pointer}
+.toggle-row{display:flex;gap:24px;align-items:flex-start;width:480px;max-width:100%}
+.toggle-row .txt{flex:1}
+.toggle-row .t{font-weight:600;font-size:16px}
+.toggle-row .d{font-weight:400;font-size:16px;color:#030303}
+
+@media (max-width:880px){.app{grid-template-columns:1fr}.sidebar{display:none}.main{padding:28px 20px 80px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="dot">⚡</span> folloze</div>
+    <div class="ver">Design System · v0.1</div>
+    <nav class="nav">
+      <div class="nav-group">Foundations</div>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#radius">Radius</a>
+      <a href="#shadows">Shadows</a>
+      <div class="nav-group">Components</div>
+      <a href="#buttons">Buttons</a>
+      <a href="#tabs">Tabs</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#select">Select</a>
+      <a href="#tags">Tags</a>
+      <a href="#checkboxes">Checkboxes</a>
+      <a href="#radios">Radios</a>
+      <a href="#toggles">Toggles</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <h1 class="page-title">Folloze Design System</h1>
+    <p class="page-sub">One living reference. Monochrome base, purple accent. Instrument Sans for headings, Inter for everything else. Components are interactive — click to check, select, switch, and tab.</p>
+
+    <!-- COLORS -->
+    <section id="colors">
+      <div class="sec-head"><h2>Colors</h2><span>monochrome base · purple accent</span></div>
+      <div class="sub-label">Brand — purple accent ramp</div>
+      <div class="swatch-grid" data-swatches="brand"></div>
+      <div class="sub-label">Brand — secondary (deep blue)</div>
+      <div class="swatch-grid" data-swatches="secondary"></div>
+      <div class="sub-label">Brand — tertiary (coral)</div>
+      <div class="swatch-grid" data-swatches="tertiary"></div>
+      <div class="sub-label">Neutral</div>
+      <div class="swatch-grid" data-swatches="neutral"></div>
+      <div class="sub-label">System — Success</div>
+      <div class="swatch-grid" data-swatches="success"></div>
+      <div class="sub-label">System — Error</div>
+      <div class="swatch-grid" data-swatches="error"></div>
+      <div class="sub-label">System — Info</div>
+      <div class="swatch-grid" data-swatches="info"></div>
+      <div class="sub-label">System — Warning</div>
+      <div class="swatch-grid" data-swatches="warning"></div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography">
+      <div class="sec-head"><h2>Typography</h2><span>Instrument Sans · Inter</span></div>
+      <div class="sub-label">Headings — Instrument Sans</div>
+      <div id="typeHeadings"></div>
+      <div class="sub-label">Body — Inter</div>
+      <div id="typeBody"></div>
+    </section>
+
+    <!-- SPACING -->
+    <section id="spacing">
+      <div class="sec-head"><h2>Spacing</h2><span>4px grid</span></div>
+      <div id="spaceScale"></div>
+    </section>
+
+    <!-- RADIUS -->
+    <section id="radius">
+      <div class="sec-head"><h2>Radius</h2><span>corner radii</span></div>
+      <div class="row" id="radiusScale" style="gap:24px"></div>
+    </section>
+
+    <!-- SHADOWS -->
+    <section id="shadows">
+      <div class="sec-head"><h2>Shadows</h2><span>drop · inner</span></div>
+      <div class="sub-label">Drop</div>
+      <div class="row" id="shadowDrop" style="gap:32px"></div>
+      <div class="sub-label">Inner</div>
+      <div class="row" id="shadowInner" style="gap:32px"></div>
+    </section>
+
+    <!-- BUTTONS -->
+    <section id="buttons">
+      <div class="sec-head"><h2>Buttons</h2><span>primary · brand · outline · ghost</span></div>
+      <div class="canvas">
+        <button class="btn btn-primary">Book a Meeting</button>
+        <button class="btn btn-primary">Book a Meeting →</button>
+        <button class="btn btn-brand">Get started</button>
+        <button class="btn btn-outline">See campaigns</button>
+        <button class="btn btn-ghost">Learn more →</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+      </div>
+      <div class="sub-label">Sizes</div>
+      <div class="canvas">
+        <button class="btn btn-primary btn-sm">Small</button>
+        <button class="btn btn-primary">Medium</button>
+        <button class="btn btn-primary btn-lg">Large</button>
+      </div>
+      <p class="tip">Primary = deep navy pill (#0A1230). Brand purple is reserved for the single most important accent action.</p>
+    </section>
+
+    <!-- TABS -->
+    <section id="tabs">
+      <div class="sec-head"><h2>Tabs</h2><span>segmented · underline</span></div>
+      <div class="sub-label">Segmented</div>
+      <div class="tabs-seg" data-tabs>
+        <button class="tab active">Overview</button>
+        <button class="tab">Campaigns</button>
+        <button class="tab">Analytics</button>
+        <button class="tab">Settings</button>
+      </div>
+      <div class="sub-label">Underline</div>
+      <div class="tabs-line" data-tabs data-panel="p1">
+        <button class="tab active">All boards</button>
+        <button class="tab">Published</button>
+        <button class="tab">Drafts</button>
+        <button class="tab">Archived</button>
+      </div>
+      <div class="panel" id="p1">Showing: All boards</div>
+    </section>
+
+    <!-- INPUTS -->
+    <section id="inputs">
+      <div class="sec-head"><h2>Inputs</h2><span>text · search · prefix · states</span></div>
+      <div class="canvas col">
+        <div class="field"><label>Default</label><div class="inp"><input placeholder="Placeholder" /></div></div>
+        <div class="field"><label>With icon</label><div class="inp"><input placeholder="Placeholder" /><span class="ico" data-ico="help"></span></div></div>
+        <div class="field"><label>Search</label><div class="inp"><span class="ico" data-ico="search"></span><input placeholder="Search" /></div></div>
+        <div class="field"><label>Prefix</label><div class="inp seg"><div class="lead">USD <span class="ico" data-ico="chevSm"></span></div><div class="divider"></div><div class="fieldcell"><input placeholder="Placeholder" /></div></div></div>
+        <div class="field"><label>URL</label><div class="inp seg"><div class="lead">http://</div><div class="divider"></div><div class="fieldcell"><input placeholder="www.folloze.com" /></div></div></div>
+        <div class="field"><label>Disabled</label><div class="inp" aria-disabled="true"><input placeholder="Disabled" disabled /></div></div>
+        <div class="field"><label>Error</label><div class="inp error"><input value="wrong@" /></div><span class="hint err">Please enter a valid email.</span></div>
+        <div class="field"><label>Text area</label><textarea class="ta" placeholder="Type your message…"></textarea></div>
+      </div>
+    </section>
+
+    <!-- SELECT -->
+    <section id="select">
+      <div class="sec-head"><h2>Select</h2><span>dropdown</span></div>
+      <div class="canvas col">
+        <div class="sel"><span class="grow">Select one…</span><span class="ico" data-ico="chev"></span></div>
+        <div class="sel"><span class="ico" data-ico="clock"></span><span class="grow">Select one…</span><span class="ico" data-ico="chev"></span></div>
+      </div>
+    </section>
+
+    <!-- TAGS -->
+    <section id="tags">
+      <div class="sec-head"><h2>Tags</h2><span>category · status</span></div>
+      <div class="canvas">
+        <span class="tag">Category</span>
+        <span class="tag tag-brand">Featured</span>
+        <span class="tag tag-success">Active</span>
+        <span class="tag tag-error">Expired</span>
+      </div>
+    </section>
+
+    <!-- CHECKBOXES -->
+    <section id="checkboxes">
+      <div class="sec-head"><h2>Checkboxes</h2><span>simple · pill chip · card</span></div>
+      <div class="sub-label">Simple</div>
+      <div class="row">
+        <label class="choice"><input type="checkbox" /><span class="box"></span> Checkbox</label>
+        <label class="choice"><input type="checkbox" checked /><span class="box"></span> Checkbox</label>
+      </div>
+      <div class="sub-label">Pill chip</div>
+      <div class="row">
+        <label class="chip"><input type="checkbox" checked /> Option one</label>
+        <label class="chip"><input type="checkbox" /> Option two</label>
+      </div>
+      <div class="sub-label">Card</div>
+      <div class="row">
+        <label class="card"><input type="checkbox" checked /><span class="thumb" data-ico="image"></span><span class="body"><span class="t">Checkbox</span><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></span><span class="box"></span></label>
+        <label class="card"><input type="checkbox" /><span class="thumb" data-ico="image"></span><span class="body"><span class="t">Checkbox</span><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></span><span class="box"></span></label>
+      </div>
+    </section>
+
+    <!-- RADIOS -->
+    <section id="radios">
+      <div class="sec-head"><h2>Radios</h2><span>simple · letter badge · card</span></div>
+      <div class="sub-label">Simple</div>
+      <div class="row">
+        <label class="choice"><input type="radio" name="r1" /><span class="box round"></span> Radio</label>
+        <label class="choice"><input type="radio" name="r1" checked /><span class="box round"></span> Radio</label>
+      </div>
+      <div class="sub-label">Letter badge</div>
+      <div class="row">
+        <label class="chip radio"><input type="radio" name="r2" checked /><span class="badge">A</span> Website design</label>
+        <label class="chip radio"><input type="radio" name="r2" /><span class="badge">A</span> Rebuild design</label>
+      </div>
+      <div class="sub-label">Card</div>
+      <div class="row">
+        <label class="card"><input type="radio" name="r3" checked /><span class="thumb" data-ico="image"></span><span class="body"><span class="t">Radio button</span><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></span><span class="box round"></span></label>
+        <label class="card"><input type="radio" name="r3" /><span class="thumb" data-ico="image"></span><span class="body"><span class="t">Radio button</span><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></span><span class="box round"></span></label>
+      </div>
+    </section>
+
+    <!-- TOGGLES -->
+    <section id="toggles">
+      <div class="sec-head"><h2>Toggles</h2><span>switch</span></div>
+      <div class="row">
+        <label class="toggle-inline"><span class="switch"><input type="checkbox" /><span class="thumb"></span></span> Option one</label>
+        <label class="toggle-inline"><span class="switch"><input type="checkbox" checked /><span class="thumb"></span></span> Option one</label>
+      </div>
+      <div class="col" style="margin-top:18px">
+        <label class="toggle-row"><span class="txt"><span class="t">Toggle checkbox</span><br /><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim.</span></span><span class="switch"><input type="checkbox" /><span class="thumb"></span></span></label>
+        <label class="toggle-row"><span class="txt"><span class="t">Toggle checkbox</span><br /><span class="d">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim.</span></span><span class="switch"><input type="checkbox" checked /><span class="thumb"></span></span></label>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* icons */
+const I={
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  help:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 1 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+  chevSm:'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="4 6 8 10 12 6"/></svg>',
+  image:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'
+};
+document.querySelectorAll("[data-ico]").forEach(el=>{el.innerHTML=I[el.dataset.ico]||""});
+
+/* colors */
+const COLORS={
+  brand:[["primary 100","#ADA8FF"],["primary 200","#8280FF"],["primary 300","#5959FF"],["primary 400","#4710C6"],["primary 500","#270788"]],
+  secondary:[["secondary 100","#B1C6F1"],["secondary 200","#5882E4"],["secondary 300","#2249B4"],["secondary 400","#142766"],["secondary 500","#0A1230"]],
+  tertiary:[["tertiary 100","#FFCEC2"],["tertiary 200","#FF9E8F"],["tertiary 300","#FF6B5C"],["tertiary 400","#DF1A0C"],["tertiary 500","#8B140E"]],
+  neutral:[["black","#030303"],["darkest","#111111"],["darker","#222222"],["dark","#444444"],["neutral","#666666"],["light","#AAAAAA"],["lighter","#CCCCCC"],["lightest","#EEEEEE"],["white","#FFFFFF"]],
+  success:[["success 100","#ECFDF3"],["success 200","#A6F4C5"],["success 300","#32D583"],["success 400","#12B76A"],["success 500","#027A48"]],
+  error:[["error 100","#FEF3F2"],["error 200","#FECDCA"],["error 300","#F97066"],["error 400","#F04438"],["error 500","#B42318"]],
+  info:[["info 100","#EFF8FF"],["info 200","#B2DDFF"],["info 300","#53B1FD"],["info 400","#2E90FA"],["info 500","#175CD3"]],
+  warning:[["warning 100","#FFFAEB"],["warning 200","#FEDF89"],["warning 300","#FDB022"],["warning 400","#F79009"],["warning 500","#B54708"]]
+};
+function txtOn(h){const c=h.replace('#','');const r=parseInt(c.substr(0,2),16),gg=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);return (0.299*r+0.587*gg+0.114*b)>150?'#030303':'#fff';}
+document.querySelectorAll("[data-swatches]").forEach(g=>{
+  g.innerHTML=(COLORS[g.dataset.swatches]||[]).map(([n,h])=>`<div class="swatch" style="background:${h};color:${txtOn(h)}"><div class="name">${n}</div><div class="hex">${h}</div></div>`).join("");
+});
+
+/* typography */
+const HEADINGS=[["H1",56],["H2",48],["H3",40],["H4",32],["H5",24],["H6",20]];
+document.getElementById("typeHeadings").innerHTML=HEADINGS.map(([l,s])=>`<div class="type-row"><div class="spec">${l} · ${s}px</div><div style="font-family:var(--fz-font-heading);font-weight:700;font-size:${s}px;line-height:1.2">Folloze</div></div>`).join("");
+const BODY=[["Large",20],["Medium",18],["Regular",16],["Small",14],["Tiny",12]];
+document.getElementById("typeBody").innerHTML=BODY.map(([l,s])=>`<div class="type-row"><div class="spec">${l} · ${s}px</div><div style="font-size:${s}px">The quick brown fox jumps over the lazy dog</div></div>`).join("");
+
+/* spacing + radius */
+const SPACE=[["space-1",4],["space-2",8],["space-3",12],["space-4",16],["space-5",24],["space-6",32],["space-7",48],["space-8",64]];
+document.getElementById("spaceScale").innerHTML=SPACE.map(([n,v])=>`<div class="scale-row"><div class="lbl"><b>${n}</b><span>${v}px</span></div><div class="space-bar" style="width:${v}px"></div></div>`).join("");
+const RADII=[["xs",4],["sm",8],["md",12],["lg",16],["xl",24],["full",999]];
+document.getElementById("radiusScale").innerHTML=RADII.map(([n,v])=>`<div class="radius-item"><div class="radius-box" style="border-radius:${v}px"></div><div class="cap"><b>${n}</b><span>${v===999?"999":v+"px"}</span></div></div>`).join("");
+
+/* shadows */
+const STEPS=["xs","sm","md","lg","xl"];
+document.getElementById("shadowDrop").innerHTML=STEPS.map(s=>`<div class="shadow-item"><div class="shadow-box" style="box-shadow:var(--fz-shadow-${s})"></div><div class="cap"><b>${s}</b></div></div>`).join("");
+document.getElementById("shadowInner").innerHTML=STEPS.map(s=>`<div class="shadow-item"><div class="shadow-box inset" style="box-shadow:var(--fz-shadow-inner-${s})"></div><div class="cap"><b>${s}</b></div></div>`).join("");
+
+/* tabs */
+document.querySelectorAll("[data-tabs]").forEach(group=>{
+  group.addEventListener("click",e=>{
+    const t=e.target.closest(".tab");if(!t)return;
+    group.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===t));
+    const pid=group.dataset.panel;
+    if(pid)document.getElementById(pid).textContent="Showing: "+t.textContent;
+  });
+});
+
+/* active nav on scroll */
+const links=[...document.querySelectorAll(".nav a")];
+const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+en.target.id))})},{rootMargin:"-10% 0px -80% 0px"});
+document.querySelectorAll("section").forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

@@ -37,14 +37,18 @@
 
 ## Files in this folder
 - `CLAUDE.md` — this file (rules)
-- `index.html` — **the single living document**: every token + component by category
-  (Colors, Typography, Buttons, Tabs, Inputs, Select, Tags, Checkboxes, Radios, Toggles),
-  interactive, light only. Open it to see the whole system.
-  **Keep it updated whenever the system changes — this is the one visual reference.**
+- `src/components/` — **the React component library** (TypeScript). One file per component:
+  Button, Tabs, Input, Textarea, Select, Tag, Checkbox, Radio, Toggle, Icon. `index.ts` is
+  the barrel export. These are the source of truth for component code — pixel-perfect to the
+  Figma DS file `iDxjKR2GG0z8xE8piANtIp`. Code Connect will map Figma components to these.
+- `src/styles/components.css` — component styles. Every value references a token, no raw hex.
+- `index.html` + `src/preview/` — the live React preview. Run `npm run dev` to see every
+  component, or `npm run build` for a static bundle in `dist/`.
+- `reference.html` — the original static (HTML/CSS) showcase, kept as a visual reference.
 - `design-system.md` — human-readable guide: tokens with intent, modes, components
 - `tokens/design-tokens.json` — machine-readable tokens
-- `tokens/tokens.css` — CSS custom properties (for web builds)
+- `tokens/tokens.css` — CSS custom properties (consumed by the components)
 - `decisions.md` — decision log + open questions
 
-_Status: v0.1 — colors + typography complete. Spacing, radius, elevation, and component
-specs are being extracted next._
+_Status: v0.2 — tokens complete + React component library built (9 components, light mode).
+Next: dark-mode component states, then Figma Code Connect mapping._
