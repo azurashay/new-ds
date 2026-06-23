@@ -51,4 +51,6 @@
 - `decisions.md` — decision log + open questions
 
 _Status: v0.2 — tokens complete + React component library built (9 components, light mode).
-Next: dark-mode component states, then Figma Code Connect mapping._
+Code Connect scaffolding prepared (`src/components/*.figma.tsx`, `figma.config.json`,
+`CODE-CONNECT.md`) and validated with `figma connect parse` — publishing is blocked until
+the Figma plan is upgraded to Organization/Enterprise. Next: dark-mode component states._

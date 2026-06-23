@@ -1,0 +1,10 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["src/components/**/*.tsx"],
+    "importPaths": {
+      "src/components/*": "@folloze/design-system"
+    },
+    "label": "React"
+  }
+}
