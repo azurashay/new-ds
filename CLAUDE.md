@@ -38,8 +38,8 @@
 ## Files in this folder
 - `CLAUDE.md` — this file (rules)
 - `src/components/` — **the React component library** (TypeScript). One file per component:
-  Button, Tabs, Input, Textarea, Select, Tag, Checkbox, Radio, Toggle, Sidebar (navigation),
-  Icon. `index.ts` is
+  Button (with leadingIcon/trailingIcon), SplitButton (button with dropdown), Tabs, Input,
+  Textarea, Select, Tag, Checkbox, Radio, Toggle, Sidebar (navigation), Icon. `index.ts` is
   the barrel export. These are the source of truth for component code — pixel-perfect to the
   Figma DS file `iDxjKR2GG0z8xE8piANtIp`. Code Connect will map Figma components to these.
 - `src/styles/components.css` — component styles. Every value references a token, no raw hex.
@@ -51,7 +51,7 @@
 - `tokens/tokens.css` — CSS custom properties (consumed by the components)
 - `decisions.md` — decision log + open questions
 
-_Status: v0.2 — tokens complete + React component library built (10 components, light mode).
+_Status: v0.2 — tokens complete + React component library built (11 components, light mode).
 Code Connect scaffolding prepared (`src/components/*.figma.tsx`, `figma.config.json`,
 `CODE-CONNECT.md`) and validated with `figma connect parse` — publishing is blocked until
 the Figma plan is upgraded to Organization/Enterprise. Next: dark-mode component states._

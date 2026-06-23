@@ -10,6 +10,7 @@ import {
   Radio,
   Toggle,
   Sidebar,
+  SplitButton,
 } from "../components";
 import type { NavItem } from "../components";
 import { Foundations } from "./Foundations";
@@ -100,6 +101,38 @@ export function App() {
           <Button variant="primary" size="lg">
             Large
           </Button>
+        </div>
+        <div className="pv-label">With icon</div>
+        <div className="pv-canvas">
+          <Button variant="primary" leadingIcon="plus">
+            Button
+          </Button>
+          <Button variant="brand" leadingIcon="plus">
+            Button
+          </Button>
+          <Button variant="outline" leadingIcon="plus">
+            Button
+          </Button>
+          <Button variant="ghost" leadingIcon="plus">
+            Button
+          </Button>
+        </div>
+        <div className="pv-label">With dropdown (split)</div>
+        <div className="pv-canvas">
+          <SplitButton variant="primary">Create Campaign</SplitButton>
+          <SplitButton variant="brand">Create Campaign</SplitButton>
+          <SplitButton variant="outline">Create Campaign</SplitButton>
+          <SplitButton variant="ghost">Create Campaign</SplitButton>
+        </div>
+        <div className="pv-label">Split sizes</div>
+        <div className="pv-canvas">
+          <SplitButton variant="brand" size="sm">
+            Create Campaign
+          </SplitButton>
+          <SplitButton variant="brand">Create Campaign</SplitButton>
+          <SplitButton variant="brand" size="lg">
+            Create Campaign
+          </SplitButton>
         </div>
       </Section>
 

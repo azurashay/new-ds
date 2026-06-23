@@ -1,5 +1,7 @@
 export { Button } from "./Button";
 export type { ButtonProps, ButtonVariant, ButtonSize } from "./Button";
+export { SplitButton } from "./SplitButton";
+export type { SplitButtonProps } from "./SplitButton";
 export { Tabs } from "./Tabs";
 export type { TabsProps, TabsVariant } from "./Tabs";
 export { Input } from "./Input";
