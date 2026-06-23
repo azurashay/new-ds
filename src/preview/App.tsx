@@ -9,8 +9,36 @@ import {
   Checkbox,
   Radio,
   Toggle,
+  Sidebar,
 } from "../components";
+import type { NavItem } from "../components";
 import { Foundations } from "./Foundations";
+
+const NAV_ITEMS: NavItem[] = [
+  { label: "Dashboard", icon: "home", active: true },
+  { label: "Audience", icon: "person", expandable: true },
+  { label: "Posts", icon: "file", badge: { value: 8, tone: "success" } },
+  {
+    label: "Schedules",
+    icon: "calendar",
+    addButton: true,
+    badge: { value: 3, tone: "warning" },
+  },
+  {
+    label: "Income",
+    icon: "pieChart",
+    highlighted: true,
+    expandable: true,
+    expanded: true,
+    children: [
+      { label: "Earnings" },
+      { label: "Refunds", active: true, chevron: true },
+      { label: "Declines" },
+      { label: "Payouts" },
+    ],
+  },
+  { label: "Promote", icon: "campaign", expandable: true },
+];
 
 function Section({
   title,
@@ -45,6 +73,12 @@ export function App() {
       </p>
 
       <Foundations />
+
+      <Section title="Navigation" note="sidebar · expanded">
+        <div className="pv-canvas">
+          <Sidebar items={NAV_ITEMS} />
+        </div>
+      </Section>
 
       <Section title="Buttons" note="primary · brand · outline · ghost">
         <div className="pv-canvas">

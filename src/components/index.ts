@@ -16,5 +16,7 @@ export { Radio } from "./Radio";
 export type { RadioProps, RadioVariant } from "./Radio";
 export { Toggle } from "./Toggle";
 export type { ToggleProps, ToggleVariant } from "./Toggle";
+export { Sidebar } from "./Sidebar";
+export type { SidebarProps, NavItem, NavSubItem, NavBadge } from "./Sidebar";
 export { Icon } from "./Icon";
 export type { IconName } from "./Icon";
