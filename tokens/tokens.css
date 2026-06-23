@@ -1,0 +1,111 @@
+/* Folloze Design System — CSS custom properties (v0.1)
+   Source: Figma daRp090YYLurl2btZc8uzE. Do not hardcode raw values — use these vars. */
+
+:root {
+  /* --- Primitive: Brand --- */
+  --fz-brand-black: #030303;
+  --fz-brand-white: #FFFFFF;
+  --fz-primary-50: #EEEDFF;
+  --fz-primary-100: #ADA8FF;
+  --fz-primary-200: #8280FF;
+  --fz-primary-300: #5959FF; /* the brand accent */
+  --fz-primary-400: #4710C6;
+  --fz-primary-500: #270788;
+  --fz-secondary-100: #B1C6F1;
+  --fz-secondary-200: #5882E4;
+  --fz-secondary-300: #2249B4;
+  --fz-secondary-400: #142766;
+  --fz-secondary-500: #0A1230;
+  --fz-tertiary-100: #FFCEC2;
+  --fz-tertiary-200: #FF9E8F;
+  --fz-tertiary-300: #FF6B5C;
+  --fz-tertiary-400: #DF1A0C;
+  --fz-tertiary-500: #8B140E;
+
+  /* --- Primitive: Neutral --- */
+  --fz-neutral-black: #030303;
+  --fz-neutral-white: #FFFFFF;
+  --fz-neutral-lightest: #EEEEEE;
+  --fz-neutral-lighter: #CCCCCC;
+  --fz-neutral-light: #AAAAAA;
+  --fz-neutral: #666666;
+  --fz-neutral-dark: #444444;
+  --fz-neutral-darker: #222222;
+  --fz-neutral-darkest: #111111;
+
+  /* --- Primitive: System — Success (green) --- */
+  --fz-success-100: #ECFDF3; --fz-success-200: #A6F4C5; --fz-success-300: #32D583; --fz-success-400: #12B76A; --fz-success-500: #027A48;
+  /* System — Error (red) */
+  --fz-error-100: #FEF3F2; --fz-error-200: #FECDCA; --fz-error-300: #F97066; --fz-error-400: #F04438; --fz-error-500: #B42318;
+  /* System — Info (blue) */
+  --fz-info-100: #EFF8FF; --fz-info-200: #B2DDFF; --fz-info-300: #53B1FD; --fz-info-400: #2E90FA; --fz-info-500: #175CD3;
+  /* System — Warning (amber) */
+  --fz-warning-100: #FFFAEB; --fz-warning-200: #FEDF89; --fz-warning-300: #FDB022; --fz-warning-400: #F79009; --fz-warning-500: #B54708;
+  /* aliases (back-compat): main = 500, light = 100 */
+  --fz-success: var(--fz-success-500); --fz-success-light: var(--fz-success-100);
+  --fz-error: var(--fz-error-500); --fz-error-light: var(--fz-error-100);
+  --fz-info: var(--fz-info-500); --fz-info-light: var(--fz-info-100);
+  --fz-warning: var(--fz-warning-500); --fz-warning-light: var(--fz-warning-100);
+
+  /* --- Radius --- */
+  --fz-radius-xs: 4px; --fz-radius-sm: 8px; --fz-radius-md: 12px; --fz-radius-lg: 16px; --fz-radius-xl: 24px; --fz-radius-full: 999px;
+  /* --- Spacing (4px grid) --- */
+  --fz-space-1: 4px; --fz-space-2: 8px; --fz-space-3: 12px; --fz-space-4: 16px; --fz-space-5: 24px; --fz-space-6: 32px; --fz-space-7: 48px; --fz-space-8: 64px;
+
+  /* --- Shadows — drop (navy-tinted #0A1230) --- */
+  --fz-shadow-xs: 0 1px 2px 0 rgba(10,18,48,.06);
+  --fz-shadow-sm: 0 1px 3px 0 rgba(10,18,48,.10), 0 1px 2px -1px rgba(10,18,48,.10);
+  --fz-shadow-md: 0 4px 8px -2px rgba(10,18,48,.10), 0 2px 4px -2px rgba(10,18,48,.06);
+  --fz-shadow-lg: 0 12px 16px -4px rgba(10,18,48,.10), 0 4px 6px -2px rgba(10,18,48,.05);
+  --fz-shadow-xl: 0 24px 32px -8px rgba(10,18,48,.14), 0 8px 12px -6px rgba(10,18,48,.08);
+  /* --- Shadows — inner (inset) --- */
+  --fz-shadow-inner-xs: inset 0 1px 2px 0 rgba(10,18,48,.06);
+  --fz-shadow-inner-sm: inset 0 2px 4px 0 rgba(10,18,48,.08);
+  --fz-shadow-inner-md: inset 0 2px 6px 0 rgba(10,18,48,.12);
+  --fz-shadow-inner-lg: inset 0 4px 8px 0 rgba(10,18,48,.16);
+  --fz-shadow-inner-xl: inset 0 6px 12px 0 rgba(10,18,48,.20);
+
+  /* --- Typography --- */
+  --fz-font-heading: "Instrument Sans", sans-serif;
+  --fz-font-body: "Inter", sans-serif;
+
+  /* --- Semantic: LIGHT mode (default) --- */
+  --fz-bg-primary: var(--fz-neutral-white);
+  --fz-bg-secondary: var(--fz-neutral-lightest);
+  --fz-bg-inverse: var(--fz-neutral-black);
+  --fz-bg-brand: var(--fz-primary-300);
+  --fz-bg-brand-subtle: var(--fz-primary-50);   /* subtle selected/hover surface */
+  --fz-bg-brand-dark: var(--fz-secondary-500);
+
+  --fz-text-primary: var(--fz-neutral-black);
+  --fz-text-secondary: var(--fz-neutral);          /* #666 — muted readable text */
+  --fz-text-placeholder: var(--fz-neutral-light);  /* #aaa — placeholders / disabled */
+  --fz-text-inverse: var(--fz-neutral-white);
+  --fz-text-brand: var(--fz-primary-300);
+
+  --fz-border-primary: var(--fz-neutral-black);
+  --fz-border-secondary: var(--fz-neutral-light);
+  --fz-border-inverse: var(--fz-neutral-white);
+  --fz-border-brand: var(--fz-primary-300);
+
+  --fz-link-primary: var(--fz-neutral-black);
+  --fz-link-secondary: var(--fz-neutral);
+  --fz-link-brand: var(--fz-primary-300);
+}
+
+/* --- Semantic: DARK mode --- */
+[data-theme="dark"] {
+  --fz-bg-primary: var(--fz-neutral-black);
+  --fz-bg-secondary: var(--fz-neutral-darker);
+  --fz-bg-inverse: var(--fz-neutral-white);
+
+  --fz-text-primary: var(--fz-neutral-white);
+  --fz-text-secondary: var(--fz-neutral-light);
+  --fz-text-inverse: var(--fz-neutral-black);
+
+  --fz-border-primary: var(--fz-neutral-white);
+  --fz-border-secondary: var(--fz-neutral-dark);
+  --fz-border-inverse: var(--fz-neutral-black);
+
+  --fz-link-primary: var(--fz-neutral-white);
+}

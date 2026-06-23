@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+
+# logs
+*.log
+npm-debug.log*
+
+# os / editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# env / secrets
+.env
+.env.*
+.figma-token
